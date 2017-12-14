@@ -39,6 +39,11 @@ build/
 local.properties
 *.iml
 
+#Eclipse
+.classpath
+.project
+org.eclipse.buildship.*
+
 # BUCK
 buck-out/
 \.buckd/
