@@ -10,7 +10,7 @@
 }
 RCT_EXPORT_MODULE()
 
-RCT_EXPORT_METHOD(generateOCRAForSuite:(NSString*) ocraSuite
+RCT_EXPORT_METHOD(generateOcra:(NSString*) ocraSuite
                   key:(NSString*) key
                   counter:(NSString*) counter
                   question:(NSString*) question
