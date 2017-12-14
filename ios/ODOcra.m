@@ -21,9 +21,10 @@ RCT_EXPORT_METHOD(generateOCRAForSuite:(NSString*) ocraSuite
                   rejecter:(RCTPromiseRejectBlock)reject)
 {
     
+    //Do some stuff
+    
     String *ocra = [self generateOCRAForSuite:ocraSuite, key:key,counbter:counter,question:question,password:password,sessionInformation:sessionInformation,timestamp:timestamp,error:error];
     
-    //Do some stuff
     if(error!=nil){
          reject(@"OcraSDK", error.localizedDescription, error);
     }else{
