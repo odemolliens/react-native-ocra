@@ -2,13 +2,12 @@
 #import "ODOcra.h"
 #import "OCRA.h"
 
-@implementation ODOcra
+@implementation ODOcra RCT_EXPORT_MODULE();
 
 - (dispatch_queue_t)methodQueue
 {
     return dispatch_get_main_queue();
 }
-RCT_EXPORT_MODULE()
 
 RCT_EXPORT_METHOD(generateOcra:(NSString*) ocraSuite
                   key:(NSString*) key
