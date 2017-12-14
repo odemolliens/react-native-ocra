@@ -36,10 +36,20 @@
 
 
 ## Usage
+
 ```javascript
 import ODOcra from 'react-native-ocra';
 
-// TODO: What to do with the module?
-ODOcra;
+// For omitted optional values pass empty strings
+ODOcra.generateOcra(
+	ocraSuite, // String, ocra suite for example "OCRA-1:HOTP-SHA1-6:QN08"
+	key,  // String, the shared secret
+	counter, // String (optional), the counter that changes on a per use basis, HEX encoded
+	question, // String the challenge question, HEX encoded
+	password, // String (optional), a password that can be used, HEX encoded
+	sessionInformation, // String (optional), Static information that identifies the current session, HEX encoded
+	timeStamp // String (optional), current timestamp since Unix Epoch in milliseconds converted to string, if not provided the library uses the current time
+	).then(ocraValue => console.log(ocraValue));
 ```
   
+ReactContextBaseJavaModule
