@@ -18,9 +18,10 @@ RCT_EXPORT_METHOD(generateOCRAForSuite:(NSString*) ocraSuite
                   sessionInformation:(NSString*) sessionInformation
                   timestamp:(NSString*) timeStamp
                   resolve:(RCTPromiseResolveBlock)resolve
-                  rejecter:(RCTPromiseRejectBlock)reject){
+                  rejecter:(RCTPromiseRejectBlock)reject)
+{
     
-    String *ocra = [OCRA generateOCRAForSuite:ocraSuite, key:key,counbter:counter,question:question,password:password,sessionInformation:sessionInformation,timestamp:timestamp,error:error];
+    String *ocra = [self generateOCRAForSuite:ocraSuite, key:key,counbter:counter,question:question,password:password,sessionInformation:sessionInformation,timestamp:timestamp,error:error];
     
     //Do some stuff
     if(error!=nil){
@@ -41,5 +42,6 @@ RCT_EXPORT_METHOD(generateOCRAForSuite:(NSString*) ocraSuite
                               error:(NSError**) error{
     return [OCRA generateOCRAForSuite:ocraSuite, key:key,counbter:counter,question:question,password:password,sessionInformation:sessionInformation,timestamp:timestamp,error:error];
 }
+
 @end
   
