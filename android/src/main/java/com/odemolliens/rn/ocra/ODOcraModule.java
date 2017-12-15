@@ -37,19 +37,19 @@ public class ODOcraModule extends ReactContextBaseJavaModule {
     }
 
     private static String generateOCRA(String ocraSuite, String key, String counter, String question, String password, String sessionInformation, String timeStamp) {
-        if (counter.equals("null")) {
+        if (counter.equals("")) {
             counter = null;
         }
 
-        if (password.equals("null")) {
+        if (password.equals("")) {
             password = null;
         }
 
-        if (sessionInformation.equals("null")) {
+        if (sessionInformation.equals("")) {
             sessionInformation = null;
         }
 
-        if (timeStamp.equals("null")) {
+        if (timeStamp.equals("")) {
             timeStamp = getTimeReference(System.currentTimeMillis());
         } else {
             long timeStampLong = Long.parseLong(timeStamp);
