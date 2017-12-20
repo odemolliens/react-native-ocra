@@ -6,8 +6,6 @@ import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 
-import javax.xml.bind.DatatypeConverter;
-
 import java.nio.ByteBuffer;
 
 public class ODOcraModule extends ReactContextBaseJavaModule {
@@ -56,12 +54,12 @@ public class ODOcraModule extends ReactContextBaseJavaModule {
             timeStamp = getTimeReference(timeStampLong);
         }
 
-        return OCRA.generateOCRA(ocraSuite, DatatypeConverter.printHexBinary(key.getBytes()), counter, question, password, sessionInformation, timeStamp);
+        return OCRA.generateOCRA(ocraSuite, ODOcraModule.byteArrayToHex(key.getBytes()), counter, question, password, sessionInformation, timeStamp);
     }
 
     public static String getTimeReference(long currentTime) {
         long roundingFactor = 1000 * 60 * 5; // The rounding factor is 5 minutes
-        return DatatypeConverter.printHexBinary(convertLongToByteArray(currentTime /
+        return ODOcraModule.byteArrayToHex(convertLongToByteArray(currentTime /
                 roundingFactor));
     }
 
@@ -69,5 +67,12 @@ public class ODOcraModule extends ReactContextBaseJavaModule {
         int byteArraySize = Long.SIZE / Byte.SIZE; // 64 bits / 8 bits = 8 bytes
         return ByteBuffer.allocate(byteArraySize).putLong(longValue).array();
     }
+
+    private static String byteArrayToHex(byte[] a) {
+        StringBuilder sb = new StringBuilder(a.length * 2);
+        for(byte b: a)
+           sb.append(String.format("%02x", b));
+        return sb.toString();
+     }
 
 }
