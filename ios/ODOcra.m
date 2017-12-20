@@ -21,27 +21,18 @@ RCT_EXPORT_METHOD(generateOcra:(NSString*) ocraSuite
 {
     
     //Do some stuff
-    
-    String *ocra = [self generateOCRAForSuite:ocraSuite, key:key,counbter:counter,question:question,password:password,sessionInformation:sessionInformation,timestamp:timestamp,error:error];
+    NSError *error;
+   
+    NSString *ocra = [OCRA generateOCRAForSuite:ocraSuite key:key counter:counter question:question password:password sessionInformation:sessionInformation timestamp:timeStamp error:&error];
     
     if(error!=nil){
          reject(@"OcraSDK", error.localizedDescription, error);
     }else{
-        resolve(result);
+        resolve(ocra);
     }
 }
 
 
-+ (NSString *) generateOCRAForSuite:(NSString*) ocraSuite
-                                key:(NSString*) key
-                            counter:(NSString*) counter
-                           question:(NSString*) question
-                           password:(NSString*) password
-                 sessionInformation:(NSString*) sessionInformation
-                          timestamp:(NSString*) timeStamp
-                              error:(NSError**) error{
-    return [OCRA generateOCRAForSuite:ocraSuite, key:key,counbter:counter,question:question,password:password,sessionInformation:sessionInformation,timestamp:timestamp,error:error];
-}
 
 @end
   
