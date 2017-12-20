@@ -13,7 +13,7 @@ export default class App extends React.Component {
 	"MyPassword",
 	"sessionInformation",
 	null
-	).then(ocraValue => console.log(ocraValue));
+  ).then(ocraValue => console.warn(ocraValue));
   }
 
   render() {

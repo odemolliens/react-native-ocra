@@ -19,7 +19,22 @@ RCT_EXPORT_METHOD(generateOcra:(NSString*) ocraSuite
                   resolve:(RCTPromiseResolveBlock)resolve
                   rejecter:(RCTPromiseRejectBlock)reject)
 {
+    if(counter.length==0){
+        counter = nil;
+    }
     
+    if(password.length==0){
+        password = nil;
+    }
+    
+    if(sessionInformation.length==0){
+        sessionInformation = nil;
+    }
+    
+    if(timeStamp.length==0){
+        timeStamp = [ODOcra getTimeReference];
+    }
+
     //Do some stuff
     NSError *error;
    
@@ -30,7 +45,17 @@ RCT_EXPORT_METHOD(generateOcra:(NSString*) ocraSuite
     }else{
         resolve(ocra);
     }
+    
 }
+
++(NSString*)getTimeReference{
+    
+    long timeStamp = [[NSDate date] timeIntervalSince1970];
+    long roundingFactor = 1000 * 60 * 5;
+    return [NSString stringWithFormat:@"%lu",(timeStamp/roundingFactor)];
+}
+
+
 
 
 
